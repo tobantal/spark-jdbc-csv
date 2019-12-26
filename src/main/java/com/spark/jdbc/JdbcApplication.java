@@ -20,11 +20,11 @@ public class JdbcApplication {
                 .setSparkHome("D:/develop/spark-jdbc/src/main/resources/");
         JavaSparkContext sc = new JavaSparkContext(sparkConf);
 
-        JavaRDD<String> rdd = sc.textFile("report.csv");
+        JavaRDD<String> rdd = sc.textFile("input");
 
         // rdd.persist(StorageLevel.DISK_ONLY());
 
-        rdd.take(5).forEach(x -> System.out.println(x));
+        rdd.foreach(x -> System.out.println(x));
 
         // rdd.saveAsTextFile("output");
 
